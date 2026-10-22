@@ -1,0 +1,55 @@
+:root {
+    /* ------------------------------------------------------------------------
+       DISEÑO CROMÁTICO (Esquema Triádico: H, H + 120, H + 240)
+       ------------------------------------------------------------------------ */
+    --tono-base: 210; /* Azul */
+    --tono-triada-1: calc(var(--tono-base) + 120); /* Magenta/Rosa */
+    --tono-triada-2: calc(var(--tono-base) + 240); /* Verde lima */
+
+    /* Fondos y Neutros */
+    --color-fondo: hsl(var(--tono-base), 15%, 96%);
+    --color-superficie: hsl(0, 0%, 100%);
+    --color-superficie-alt: hsl(var(--tono-base), 10%, 90%);
+    --color-texto: hsl(var(--tono-base), 30%, 15%);
+    --color-texto-secundario: hsl(var(--tono-base), 10%, 40%);
+    --color-borde: hsl(var(--tono-base), 15%, 80%);
+
+    /* Primario */
+    --color-primario: hsl(var(--tono-base), 70%, 45%);
+    --color-primario-hover: hsl(var(--tono-base), 70%, 38%);
+    --color-primario-contraste: hsl(0, 0%, 100%);
+
+    /* 3 Tipos de Fichas (Distinguibles por color y forma) */
+    --ficha-0-color: hsl(var(--tono-base), 80%, 50%);
+    --ficha-0-borde: hsl(var(--tono-base), 85%, 35%);
+
+    --ficha-1-color: hsl(var(--tono-triada-1), 75%, 50%);
+    --ficha-1-borde: hsl(var(--tono-triada-1), 80%, 35%);
+
+    --ficha-2-color: hsl(var(--tono-triada-2), 70%, 42%);
+    --ficha-2-borde: hsl(var(--tono-triada-2), 75%, 30%);
+
+    /* Interacción Drag & Drop y Victoria */
+    --color-drop-hover: hsl(var(--tono-base), 60%, 88%);
+    --color-victoria: hsl(140, 60%, 35%);
+
+    /* ------------------------------------------------------------------------
+       DISEÑO TIPOGRÁFICO Y ESPACIAL
+       ------------------------------------------------------------------------ */
+    --fuente-principal: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --tamano-base: 1rem;
+    --tamano-sm: 0.875rem;
+    --tamano-lg: 1.25rem;
+
+    --espacio-sm: 0.5rem;
+    --espacio-md: 1rem;
+    --espacio-lg: 1.5rem;
+
+    --radio-sm: 0.25rem;
+    --radio-md: 0.5rem;
+
+    /* Magnitudes de fichas */
+    --escala-pequena: 50%;
+    --escala-mediana: 75%;
+    --escala-grande: 95%;
+}

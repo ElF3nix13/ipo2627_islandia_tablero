@@ -6,12 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tablero</title>
 
-    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" type="module"></script>
 </head>
 
 <body>
-    
+
+    <header class="header">
+        <h1 class="header__title">Tablero</h1>
+        <nav class="nav">
+            <button class="btn btn--secundario" data-action="mostrar-ayuda">Ayuda</button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <aside class="control-panel">
+            <div class="game-status">
+                <span class="game-status__etiqueta">Movimientos:</span>
+                <span class="game-status__valor" data-bind="movimientos">0</span>
+            </div>
+
+            <div class="control-group">
+                <label for="input-dimension" class="control-label">Dimensión:</label>
+                <input type="number" id="input-dimension" class="control-input" data-setting="dimension" min="3">
+            </div>
+
+            <div class="control-group">
+                <label for="select-tamano" class="control-label">Tamaño de las fichas:</label>
+                <select id="select-tamano" class="control-input" data-setting="tamano">
+                    <option value="pequena">Pequeña</option>
+                    <option value="mediana">Mediana</option>
+                    <option value="grande">Grande</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="select-forma" class="control-label">Forma de las fichas:</label>
+                <select id="select-forma" class="control-input" data-setting="forma">
+                    <option value="circulo">Círculo</option>
+                    <option value="cuadrado">Cuadrado</option>
+                    <option value="triangulo">Triángulo</option>
+                </select>
+            </div>
+
+            <button class="btn btn--primario" data-action="nuevo-juego">Nueva partida</button>
+        </aside>
+
+        <section class="board-section">
+            <div id="tablero-grid" class="board-grid" data-grid-board></div>
+        </section>
+    </main>
+
+    <!-- Modal de Asistencia: Ayuda / Mecánica -->
+    <dialog id="modal-ayuda" class="modal" data-modal="ayuda">
+        <div class="modal__content">
+            <header class="modal__header">
+                <h2>Mecánica del Juego</h2>
+                <button class="modal__close" data-action="cerrar-ayuda">&times;</button>
+            </header>
+            <div class="modal__body">
+                <p><strong>Comienzo:</strong> Tablero aleatorio de tamaño N &ge; 3 con 3 tipos de fichas.</p>
+                <p><strong>Movimiento:</strong> Arrastra y suelta una ficha sobre otra para intercambiar sus posiciones.</p>
+                <p><strong>Fin:</strong> Consigue que todas las fichas de cada fila sean del mismo tipo.</p>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Modal de Asistencia: Notificación de Victoria -->
+    <dialog id="modal-victoria" class="modal modal--victoria" data-modal="victoria">
+        <div class="modal__content">
+            <header class="modal__header">
+                <h2>¡Enhorabuena!</h2>
+            </header>
+            <div class="modal__body">
+                <p>Has completado el tablero en <strong data-bind="victoria-movimientos">0</strong> movimientos.</p>
+                <button class="btn btn--primario" data-action="victoria-reiniciar">Nueva partida</button>
+            </div>
+        </div>
+    </dialog>
+
 </body>
+
 </html>

@@ -1,7 +1,291 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+@import url("variables.css");
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    font-size: var(--tamano-base);
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   CABECERA (Composición Unidimensional con Flexbox)
+   -------------------------------------------------------------------------- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--espacio-md) var(--espacio-lg);
+    background-color: var(--color-superficie);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.header__title {
+    font-size: var(--tamano-lg);
+}
+
+.nav {
+    display: flex;
+    gap: var(--espacio-sm);
+}
+
+/* --------------------------------------------------------------------------
+   BOTONES
+   -------------------------------------------------------------------------- */
+.btn {
+    padding: var(--espacio-sm) var(--espacio-md);
+    font-family: inherit;
+    font-size: var(--tamano-sm);
+    border: none;
+    border-radius: var(--radio-sm);
+    cursor: pointer;
+}
+
+.btn--primario {
+    color: var(--color-primario-contraste);
+    background-color: var(--color-primario);
+}
+
+.btn--primario:hover {
+    background-color: var(--color-primario-hover);
+}
+
+.btn--secundario {
+    color: var(--color-texto);
+    background-color: var(--color-superficie-alt);
+    border: 1px solid var(--color-borde);
+}
+
+.btn--secundario:hover {
+    background-color: var(--color-borde);
+}
+
+/* --------------------------------------------------------------------------
+   DISTRIBUCIÓN PRINCIPAL
+   -------------------------------------------------------------------------- */
+.main {
+    display: flex;
+    flex: 1;
+    padding: var(--espacio-lg);
+    gap: var(--espacio-lg);
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Panel lateral de controles (Aside) */
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-md);
+    width: clamp(15rem, 25vw, 20rem);
+    background-color: var(--color-superficie);
+    padding: var(--espacio-md);
+    border-radius: var(--radio-md);
+    border: 1px solid var(--color-borde);
+}
+
+.game-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--espacio-sm);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.game-status__etiqueta {
+    font-size: var(--tamano-sm);
+    color: var(--color-texto-secundario);
+}
+
+.game-status__valor {
+    font-size: var(--tamano-lg);
+    font-weight: bold;
+    color: var(--color-primario);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.control-label {
+    font-size: var(--tamano-sm);
+    color: var(--color-texto-secundario);
+}
+
+.control-input {
+    padding: var(--espacio-sm);
+    font-family: inherit;
+    font-size: var(--tamano-base);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-sm);
+    background-color: var(--color-fondo);
+}
+
+/* --------------------------------------------------------------------------
+   ÁREA DEL TABLERO (Composición Bidimensional con CSS Grid)
+   -------------------------------------------------------------------------- */
+.board-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-grid {
+    display: grid;
+    gap: clamp(1px, calc(18px / var(--n-cols, 4)), 8px);
+    padding: clamp(4px, calc(24px / var(--n-cols, 4)), 12px);
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    width: min(70vmin, 550px);
+    height: min(70vmin, 550px);
+}
+
+.tablero-celda {
+    background-color: var(--color-superficie-alt);
+    border: 1px dashed var(--color-borde);
+    border-radius: var(--radio-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Feedback Drag & Drop */
+.tablero-celda.elemento-en-sobrevuelo {
+    background-color: var(--color-drop-hover);
+    border-color: var(--color-primario);
+}
+
+/* --------------------------------------------------------------------------
+   FICHAS (Formas, Magnitudes y Colores)
+   -------------------------------------------------------------------------- */
+.ficha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    user-select: none;
+}
+
+.ficha:active {
+    cursor: grabbing;
+}
+
+.ficha.elemento-en-arrastre {
+    opacity: 0.4;
+}
+
+.ficha-contenido-interno {
+    display: none;
+}
+
+/* Magnitudes */
+.ficha-pequena {
+    width: var(--escala-pequena);
+    height: var(--escala-pequena);
+}
+
+.ficha-mediana {
+    width: var(--escala-mediana);
+    height: var(--escala-mediana);
+}
+
+.ficha-grande {
+    width: var(--escala-grande);
+    height: var(--escala-grande);
+}
+
+/* Colores */
+.ficha-tipo-0 {
+    background-color: var(--ficha-0-color);
+    border: 1px solid var(--ficha-0-borde);
+}
+
+.ficha-tipo-1 {
+    background-color: var(--ficha-1-color);
+    border: 1px solid var(--ficha-1-borde);
+}
+
+.ficha-tipo-2 {
+    background-color: var(--ficha-2-color);
+    border: 1px solid var(--ficha-2-borde);
+}
+
+/* Formas */
+.ficha-circulo {
+    border-radius: 50%;
+}
+
+.ficha-cuadrado {
+    border-radius: var(--radio-sm);
+}
+
+.ficha-triangulo {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    border: none;
+}
+
+/* --------------------------------------------------------------------------
+   MODALES DE ASISTENCIA (Posicionamiento fijo)
+   -------------------------------------------------------------------------- */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    background-color: var(--color-superficie);
+    padding: var(--espacio-lg);
+    width: min(90vw, 24rem);
+}
+
+.modal::backdrop {
+    background-color: hsla(0, 0%, 0%, 0.4);
+}
+
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--espacio-sm);
+}
+
+.modal__header h2 {
+    flex: 1;
+    text-align: center;
+}
+
+.modal__close {
+    background: transparent;
+    border: none;
+    font-size: var(--tamano-lg);
+    cursor: pointer;
+}
+
+.modal__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-sm);
+    font-size: var(--tamano-sm);
+    color: var(--color-texto-secundario);
+}
+
+.modal--victoria .modal__body {
+    text-align: center;
+    gap: var(--espacio-md);
+}
+
+.modal--victoria .btn {
+    align-self: center;
 }
