@@ -31,8 +31,14 @@ body {
     border-bottom: 1px solid var(--color-borde);
 }
 
+/* Título como logo identificativo con tono base */
 .header__title {
     font-size: var(--tamano-lg);
+    color: var(--color-primario);
+}
+
+.control-panel .btn {
+    align-self: center;
 }
 
 .nav {
@@ -69,6 +75,19 @@ body {
 
 .btn--secundario:hover {
     background-color: var(--color-borde);
+}
+
+.btn--redondo {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border-radius: 50% !important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    flex-shrink: 0;
 }
 
 /* --------------------------------------------------------------------------

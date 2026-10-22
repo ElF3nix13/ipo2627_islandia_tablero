@@ -51,9 +51,11 @@
        DISEÑO TIPOGRÁFICO Y ESPACIAL
        ------------------------------------------------------------------------ */
     --fuente-principal: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --fuente-logo: "Georgia", "Times New Roman", serif;
     --tamano-base: 1rem;
     --tamano-sm: 0.875rem;
     --tamano-lg: 1.25rem;
+    --tamano-xl: 1.85rem;
 
     --espacio-sm: 0.5rem;
     --espacio-md: 1rem;
@@ -81,5 +83,5 @@
 :root[data-paleta="escala-grises"] {
     --sat-fichas-base: 0%;
     --lum-fichas-base: 15%;
-    --paso-lum-fichas: 20%;
+    --paso-lum-fichas: 22.5%;
 }
