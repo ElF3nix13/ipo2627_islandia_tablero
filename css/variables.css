@@ -1,37 +1,51 @@
 :root {
     /* ------------------------------------------------------------------------
-       DISEÑO CROMÁTICO (Esquema Triádico: H, H + 120, H + 240)
+       DISEÑO CROMÁTICO (Esquemas HSL calculados con calc() y var())
        ------------------------------------------------------------------------ */
-    --tono-base: 210; /* Azul */
-    --tono-triada-1: calc(var(--tono-base) + 120); /* Magenta/Rosa */
-    --tono-triada-2: calc(var(--tono-base) + 240); /* Verde lima */
+    /* Valores raíz del sistema */
+    --tono-base: 215;                        
+    --sat-base: 75%;
+    --lum-base: 45%;
 
-    /* Fondos y Neutros */
+    /* Parámetros por defecto para las fichas (mismos que las bases) */
+    --tono-fichas-base: var(--tono-base);
+    --paso-tono-fichas: 120;
+    --sat-fichas-base: var(--sat-base);
+    --lum-fichas-base: var(--lum-base);
+    --paso-lum-fichas: 0%;
+
+    /* Tonos calculados para cada tipo de ficha */
+    --tono-ficha-0: var(--tono-fichas-base);
+    --tono-ficha-1: calc(var(--tono-ficha-0) + var(--paso-tono-fichas));
+    --tono-ficha-2: calc(var(--tono-ficha-0) + 2 * var(--paso-tono-fichas));
+
+    /* Saturación y luminosidad calculadas para cada ficha */
+    --sat-ficha-0: var(--sat-fichas-base);
+    --sat-ficha-1: var(--sat-fichas-base);
+    --sat-ficha-2: var(--sat-fichas-base);
+
+    --lum-ficha-0: var(--lum-fichas-base);
+    --lum-ficha-1: calc(var(--lum-ficha-0) + var(--paso-lum-fichas));
+    --lum-ficha-2: calc(var(--lum-ficha-0) + var(--paso-lum-fichas) + var(--paso-lum-fichas));
+
+    /* Colores resultantes de las 3 fichas */
+    --ficha-0-color: hsl(var(--tono-ficha-0), var(--sat-ficha-0), var(--lum-ficha-0));
+    --ficha-1-color: hsl(var(--tono-ficha-1), var(--sat-ficha-1), var(--lum-ficha-1));
+    --ficha-2-color: hsl(var(--tono-ficha-2), var(--sat-ficha-2), var(--lum-ficha-2));
+
+    /* Interfaz: Neutros y acentos derivados del tono raíz */
     --color-fondo: hsl(var(--tono-base), 15%, 96%);
     --color-superficie: hsl(0, 0%, 100%);
-    --color-superficie-alt: hsl(var(--tono-base), 10%, 90%);
+    --color-superficie-alt: hsl(var(--tono-base), 15%, 93%);
     --color-texto: hsl(var(--tono-base), 30%, 15%);
     --color-texto-secundario: hsl(var(--tono-base), 10%, 40%);
-    --color-borde: hsl(var(--tono-base), 15%, 80%);
+    --color-borde: hsl(var(--tono-base), 15%, 82%);
 
-    /* Primario */
-    --color-primario: hsl(var(--tono-base), 70%, 45%);
-    --color-primario-hover: hsl(var(--tono-base), 70%, 38%);
+    --color-primario: hsl(var(--tono-base), var(--sat-base), var(--lum-base));
+    --color-primario-hover: hsl(var(--tono-base), var(--sat-base), calc(var(--lum-base) - 10%));
     --color-primario-contraste: hsl(0, 0%, 100%);
 
-    /* 3 Tipos de Fichas (Distinguibles por color y forma) */
-    --ficha-0-color: hsl(var(--tono-base), 80%, 50%);
-    --ficha-0-borde: hsl(var(--tono-base), 85%, 35%);
-
-    --ficha-1-color: hsl(var(--tono-triada-1), 75%, 50%);
-    --ficha-1-borde: hsl(var(--tono-triada-1), 80%, 35%);
-
-    --ficha-2-color: hsl(var(--tono-triada-2), 70%, 42%);
-    --ficha-2-borde: hsl(var(--tono-triada-2), 75%, 30%);
-
-    /* Interacción Drag & Drop y Victoria */
     --color-drop-hover: hsl(var(--tono-base), 60%, 88%);
-    --color-victoria: hsl(140, 60%, 35%);
 
     /* ------------------------------------------------------------------------
        DISEÑO TIPOGRÁFICO Y ESPACIAL
@@ -50,6 +64,22 @@
 
     /* Magnitudes de fichas */
     --escala-pequena: 50%;
-    --escala-mediana: 70%;
+    --escala-mediana: 75%;
     --escala-grande: 95%;
+}
+
+/* ----------------------------------------------------------------------------
+   VARIACIONES DE PALETA MEDIANTE VARIABLES Y SUMAS
+   ---------------------------------------------------------------------------- */
+
+/* Tríada Complementaria: parte del complementario del tono original (+ 180) */
+:root[data-paleta="complementaria"] {
+    --tono-fichas-base: calc(var(--tono-base) + 180);
+}
+
+/* Escala de Grises: saturación a 0% y progresión uniforme de luminosidad */
+:root[data-paleta="escala-grises"] {
+    --sat-fichas-base: 0%;
+    --lum-fichas-base: 15%;
+    --paso-lum-fichas: 20%;
 }

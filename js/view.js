@@ -6,6 +6,7 @@ export class View {
         this.inputDimension = document.querySelector('[data-setting="dimension"]');
         this.inputTamano = document.querySelector('[data-setting="tamano"]');
         this.inputAspecto = document.querySelector('[data-setting="aspecto"]');
+        this.inputPaleta = document.querySelector('[data-setting="paleta"]');
         this.botonesNuevoJuego = document.querySelectorAll('[data-action="nuevo-juego"]');
         this.btnAyuda = document.querySelector('[data-action="mostrar-ayuda"]');
         this.btnCerrarAyuda = document.querySelector('[data-action="cerrar-ayuda"]');
@@ -14,7 +15,6 @@ export class View {
         this.spanMovimientos = document.querySelector('[data-bind="movimientos"]');
         this.spanVictoriaMovimientos = document.querySelector('[data-bind="victoria-movimientos"]');
 
-        // Geometría vectorial SVG limpia para cada tipo según el tema visual
         this.formasSvg = {
             geometrico: {
                 0: '<circle cx="50" cy="50" r="45" />',
@@ -33,10 +33,13 @@ export class View {
         this.inputDimension.value = estado.dimension;
         this.inputTamano.value = estado.tamanoFichas;
         this.inputAspecto.value = estado.aspectoFichas;
+        this.inputPaleta.value = estado.paletaColores;
     }
 
     renderizarTablero(tablero, config) {
-        const { dimension, tamanoFichas, aspectoFichas, juegoTerminado } = config;
+        const { dimension, tamanoFichas, aspectoFichas, paletaColores, juegoTerminado } = config;
+
+        document.documentElement.dataset.paleta = paletaColores;
 
         this.gridContainer.innerHTML = '';
         this.gridContainer.style.setProperty('--n-cols', dimension);
@@ -61,7 +64,6 @@ export class View {
                 ficha.dataset.columna = cIndex;
                 ficha.dataset.tipo = tipoFicha;
 
-                // Contenido SVG vectorial correspondiente a este tipo de ficha
                 const contenidoSvg = conjuntoActual[tipoFicha] || conjuntoActual[0];
                 ficha.innerHTML = `
                     <svg class="ficha__svg" viewBox="0 0 100 100" aria-hidden="true">
@@ -119,6 +121,10 @@ export class View {
 
     bindCambioAspecto(handler) {
         this.inputAspecto.addEventListener('change', (e) => handler(e.target.value));
+    }
+
+    bindCambioPaleta(handler) {
+        this.inputPaleta.addEventListener('change', (e) => handler(e.target.value));
     }
 
     bindMostrarAyuda() {

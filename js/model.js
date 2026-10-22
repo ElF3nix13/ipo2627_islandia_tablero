@@ -2,9 +2,10 @@
 
 export class Model {
     constructor() {
-        this.dimension = 3;
+        this.dimension = 4;
         this.tamanoFichas = 'mediana';
-        this.aspectoFichas = 'geometrico'; // 'geometrico' o 'poligonos'
+        this.aspectoFichas = 'geometrico';
+        this.paletaColores = 'primaria';
         this.tablero = [];
         this.movimientos = 0;
         this.juegoTerminado = false;
@@ -120,11 +121,21 @@ export class Model {
         return false;
     }
 
+    setPaletaColores(paleta) {
+        if (paleta !== this.paletaColores) {
+            this.paletaColores = paleta;
+            this.iniciarNuevaPartida(this.dimension);
+            return true;
+        }
+        return false;
+    }
+
     getEstado() {
         return {
             dimension: this.dimension,
             tamanoFichas: this.tamanoFichas,
             aspectoFichas: this.aspectoFichas,
+            paletaColores: this.paletaColores,
             tablero: this.tablero,
             movimientos: this.movimientos,
             juegoTerminado: this.juegoTerminado

@@ -12,6 +12,7 @@ export class Controller {
         this.view.bindCambioDimension((dimension) => this.manejarCambioDimension(dimension));
         this.view.bindCambioTamano((tamano) => this.manejarCambioTamano(tamano));
         this.view.bindCambioAspecto((aspecto) => this.manejarCambioAspecto(aspecto));
+        this.view.bindCambioPaleta((paleta) => this.manejarCambioPaleta(paleta));
         this.view.bindMostrarAyuda();
 
         this.view.bindDragAndDrop((origen, destino) => this.handleDrop(origen, destino));
@@ -40,6 +41,12 @@ export class Controller {
 
     manejarCambioAspecto(aspecto) {
         if (this.model.setAspectoFichas(aspecto)) {
+            this.actualizarVistaGeneral();
+        }
+    }
+
+    manejarCambioPaleta(paleta) {
+        if (this.model.setPaletaColores(paleta)) {
             this.actualizarVistaGeneral();
         }
     }
