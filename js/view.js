@@ -45,10 +45,14 @@ export class View {
                 ficha.dataset.columna = cIndex;
                 ficha.dataset.tipo = tipoFicha;
 
-                const contenidoFicha = document.createElement('span');
-                contenidoFicha.className = 'ficha-contenido-interno';
-                contenidoFicha.textContent = tipoFicha + 1;
-                ficha.appendChild(contenidoFicha);
+                // Si es triángulo, insertamos el polígono SVG vectorial nativo
+                if (formaFichas === 'triangulo') {
+                    ficha.innerHTML = `
+                        <svg class="ficha-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <polygon points="50,5 95,95 5,95" />
+                        </svg>
+                    `;
+                }
 
                 celda.appendChild(ficha);
                 this.gridContainer.appendChild(celda);
@@ -118,6 +122,7 @@ export class View {
             };
             e.dataTransfer.setData('application/json', JSON.stringify(datosOrigen));
             e.dataTransfer.effectAllowed = 'move';
+
             ficha.classList.add('elemento-en-arrastre');
         });
 
