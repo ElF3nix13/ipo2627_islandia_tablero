@@ -1,5 +1,8 @@
 @import url("variables.css");
 
+/* --------------------------------------------------------------------------
+   REGLA RESET BÁSICA
+   -------------------------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -38,7 +41,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   BOTONES
+   BOTONES (Notación BEM y sin florituras)
    -------------------------------------------------------------------------- */
 .btn {
     padding: var(--espacio-sm) var(--espacio-md);
@@ -85,7 +88,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--espacio-md);
-    width: clamp(15rem, 25vw, 20rem);
+    width: clamp(16rem, 25vw, 22rem);
     background-color: var(--color-superficie);
     padding: var(--espacio-md);
     border-radius: var(--radio-md);
@@ -160,14 +163,15 @@ body {
     align-items: center;
 }
 
-/* Feedback Drag & Drop */
+/* Feedback visual Drag & Drop */
 .tablero-celda.elemento-en-sobrevuelo {
     background-color: var(--color-drop-hover);
     border-color: var(--color-primario);
 }
 
 /* --------------------------------------------------------------------------
-   FICHAS (Formas, Magnitudes y Colores)
+   FICHAS: FORMA, COLOR Y TAMAÑO
+   Cada tipo (0, 1, 2) tiene su propia forma SVG y su color triádico
    -------------------------------------------------------------------------- */
 .ficha {
     display: flex;
@@ -175,6 +179,8 @@ body {
     align-items: center;
     cursor: grab;
     user-select: none;
+    background-color: transparent;
+    border: none;
 }
 
 .ficha:active {
@@ -185,68 +191,46 @@ body {
     opacity: 0.4;
 }
 
-.ficha-contenido-interno {
-    display: none;
-}
-
 /* Magnitudes */
-.ficha-pequena {
+.ficha--pequena {
     width: var(--escala-pequena);
     height: var(--escala-pequena);
 }
 
-.ficha-mediana {
+.ficha--mediana {
     width: var(--escala-mediana);
     height: var(--escala-mediana);
 }
 
-.ficha-grande {
+.ficha--grande {
     width: var(--escala-grande);
     height: var(--escala-grande);
 }
 
-/* Colores de los 3 tipos de fichas */
+/* Colores de los 3 tipos de fichas (aplicados al trazo y relleno SVG) */
 .ficha-tipo-0 {
-    background-color: var(--ficha-0-color);
-    border: 1px solid var(--ficha-0-borde);
-    color: var(--ficha-0-color); /* Usado por el SVG con currentColor */
+    color: var(--ficha-0-color);
 }
 
 .ficha-tipo-1 {
-    background-color: var(--ficha-1-color);
-    border: 1px solid var(--ficha-1-borde);
     color: var(--ficha-1-color);
 }
 
 .ficha-tipo-2 {
-    background-color: var(--ficha-2-color);
-    border: 1px solid var(--ficha-2-borde);
     color: var(--ficha-2-color);
 }
 
-/* Formas */
-.ficha-circulo {
-    border-radius: 50%;
-}
-
-.ficha-cuadrado {
-    border-radius: var(--radio-sm);
-}
-
-/* El triángulo no tiene fondo propio ni borde: el dibujo es su SVG */
-.ficha-triangulo {
-    background-color: transparent;
-    border: none;
-}
-
-.ficha-svg {
+.ficha__svg {
     width: 100%;
     height: 100%;
     display: block;
-    pointer-events: none; /* Asegura que el evento drag ocurra en la ficha */
+    pointer-events: none;
 }
 
-.ficha-svg polygon {
+.ficha__svg circle,
+.ficha__svg rect,
+.ficha__svg polygon,
+.ficha__svg path {
     fill: currentColor;
 }
 

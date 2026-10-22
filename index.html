@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tablero</title>
 
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" type="module"></script>
 </head>
@@ -41,11 +42,10 @@
             </div>
 
             <div class="control-group">
-                <label for="select-forma" class="control-label">Forma de las fichas:</label>
-                <select id="select-forma" class="control-input" data-setting="forma">
-                    <option value="circulo">Círculo</option>
-                    <option value="cuadrado">Cuadrado</option>
-                    <option value="triangulo">Triángulo</option>
+                <label for="select-aspecto" class="control-label">Aspecto de las fichas:</label>
+                <select id="select-aspecto" class="control-input" data-setting="aspecto">
+                    <option value="geometrico">Geométrico</option>
+                    <option value="naipes">Naipes</option>
                 </select>
             </div>
 
@@ -65,7 +65,7 @@
                 <button class="modal__close" data-action="cerrar-ayuda">&times;</button>
             </header>
             <div class="modal__body">
-                <p><strong>Comienzo:</strong> Tablero aleatorio de tamaño N &ge; 3 con 3 tipos de fichas.</p>
+                <p><strong>Comienzo:</strong> Tablero aleatorio de tamaño N &ge; 3 con 3 tipos de fichas distinguibles por forma y color.</p>
                 <p><strong>Movimiento:</strong> Arrastra y suelta una ficha sobre otra para intercambiar sus posiciones.</p>
                 <p><strong>Fin:</strong> Consigue que todas las fichas de cada fila sean del mismo tipo.</p>
             </div>

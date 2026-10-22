@@ -4,7 +4,7 @@ export class Model {
     constructor() {
         this.dimension = 3;
         this.tamanoFichas = 'mediana';
-        this.formaFichas = 'circulo';
+        this.aspectoFichas = 'geometrico'; // 'geometrico' o 'poligonos'
         this.tablero = [];
         this.movimientos = 0;
         this.juegoTerminado = false;
@@ -19,18 +19,18 @@ export class Model {
     }
 
     generarTableroResoluble(n) {
-        // 1. Definir qué tipo tendrá cada fila en la solución final
-        // Garantizamos que los 3 tipos (0, 1, 2) aparezcan al menos una vez cuando N >= 3
+        // 1. Asignar el tipo de ficha para cada fila final (0, 1 o 2)
+        // Se asegura que los 3 tipos aparezcan al menos una vez al ser N >= 3
         const tiposPorFila = [];
         for (let i = 0; i < n; i++) {
             if (i < 3) {
-                tiposPorFila.push(i); // Asegura tipos 0, 1 y 2
+                tiposPorFila.push(i);
             } else {
-                tiposPorFila.push(Math.floor(Math.random() * 3)); // Reparto para filas restantes
+                tiposPorFila.push(Math.floor(Math.random() * 3));
             }
         }
 
-        // 2. Crear la bolsa con exactamente las fichas necesarias (múltiplos de N)
+        // 2. Llenar la bolsa con múltiplos exactos de N para cada tipo
         const bolsaFichas = [];
         for (let i = 0; i < n; i++) {
             const tipoFila = tiposPorFila[i];
@@ -39,12 +39,11 @@ export class Model {
             }
         }
 
-        // 3. Barajar aleatoriamente la bolsa (Fisher-Yates shuffle)
+        // 3. Barajar aleatoriamente mediante Fisher-Yates
         let matriz = [];
         let esVictoria = true;
 
         while (esVictoria) {
-            // Algoritmo Fisher-Yates
             for (let i = bolsaFichas.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 const temp = bolsaFichas[i];
@@ -52,13 +51,11 @@ export class Model {
                 bolsaFichas[j] = temp;
             }
 
-            // Reconstruir la matriz NxN
             matriz = [];
             for (let i = 0; i < n; i++) {
                 matriz.push(bolsaFichas.slice(i * n, (i + 1) * n));
             }
 
-            // Comprobar que no empiece ya resuelto
             esVictoria = this.comprobarVictoriaMatriz(matriz);
         }
 
@@ -114,9 +111,9 @@ export class Model {
         return false;
     }
 
-    setFormaFichas(forma) {
-        if (forma !== this.formaFichas) {
-            this.formaFichas = forma;
+    setAspectoFichas(aspecto) {
+        if (aspecto !== this.aspectoFichas) {
+            this.aspectoFichas = aspecto;
             this.iniciarNuevaPartida(this.dimension);
             return true;
         }
@@ -127,7 +124,7 @@ export class Model {
         return {
             dimension: this.dimension,
             tamanoFichas: this.tamanoFichas,
-            formaFichas: this.formaFichas,
+            aspectoFichas: this.aspectoFichas,
             tablero: this.tablero,
             movimientos: this.movimientos,
             juegoTerminado: this.juegoTerminado

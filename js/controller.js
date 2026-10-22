@@ -11,7 +11,7 @@ export class Controller {
         this.view.bindNuevoJuego(() => this.manejarNuevoJuego());
         this.view.bindCambioDimension((dimension) => this.manejarCambioDimension(dimension));
         this.view.bindCambioTamano((tamano) => this.manejarCambioTamano(tamano));
-        this.view.bindCambioForma((forma) => this.manejarCambioForma(forma));
+        this.view.bindCambioAspecto((aspecto) => this.manejarCambioAspecto(aspecto));
         this.view.bindMostrarAyuda();
 
         this.view.bindDragAndDrop((origen, destino) => this.handleDrop(origen, destino));
@@ -38,8 +38,8 @@ export class Controller {
         }
     }
 
-    manejarCambioForma(forma) {
-        if (this.model.setFormaFichas(forma)) {
+    manejarCambioAspecto(aspecto) {
+        if (this.model.setAspectoFichas(aspecto)) {
             this.actualizarVistaGeneral();
         }
     }
