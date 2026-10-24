@@ -81,6 +81,6 @@
 /* Escala de Grises: saturación a 0% y progresión uniforme de luminosidad */
 :root[data-paleta="escala-grises"] {
     --sat-fichas-base: 0%;
-    --lum-fichas-base: 15%;
-    --paso-lum-fichas: 22.5%;
+    --lum-fichas-base: 0%;
+    --paso-lum-fichas: 30%;
 }
