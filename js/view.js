@@ -133,6 +133,15 @@ export class View {
     }
 
     bindDragAndDrop(onDrop) {
+        let celdaSobrevueloActual = null;
+
+        const limpiarSobrevuelo = () => {
+            if (celdaSobrevueloActual) {
+                celdaSobrevueloActual.classList.remove('elemento-en-sobrevuelo');
+                celdaSobrevueloActual = null;
+            }
+        };
+
         this.gridContainer.addEventListener('dragstart', (e) => {
             const ficha = e.target.closest('[data-draggable-item]');
             if (!ficha) return;
@@ -150,24 +159,29 @@ export class View {
         this.gridContainer.addEventListener('dragover', (e) => {
             e.preventDefault();
             e.dataTransfer.dropEffect = 'move';
-        });
 
-        this.gridContainer.addEventListener('dragenter', (e) => {
             const celda = e.target.closest('[data-cell-container]');
-            if (celda) celda.classList.add('elemento-en-sobrevuelo');
+            if (celda !== celdaSobrevueloActual) {
+                limpiarSobrevuelo();
+                if (celda) {
+                    celda.classList.add('elemento-en-sobrevuelo');
+                    celdaSobrevueloActual = celda;
+                }
+            }
         });
 
         this.gridContainer.addEventListener('dragleave', (e) => {
-            const celda = e.target.closest('[data-cell-container]');
-            if (celda) celda.classList.remove('elemento-en-sobrevuelo');
+            if (!this.gridContainer.contains(e.relatedTarget)) {
+                limpiarSobrevuelo();
+            }
         });
 
         this.gridContainer.addEventListener('drop', (e) => {
             e.preventDefault();
             const celdaDestino = e.target.closest('[data-cell-container]');
+            limpiarSobrevuelo();
             if (!celdaDestino) return;
 
-            celdaDestino.classList.remove('elemento-en-sobrevuelo');
             const datosOrigenJSON = e.dataTransfer.getData('application/json');
             if (!datosOrigenJSON) return;
 
@@ -183,6 +197,7 @@ export class View {
         this.gridContainer.addEventListener('dragend', (e) => {
             const ficha = e.target.closest('[data-draggable-item]');
             if (ficha) ficha.classList.remove('elemento-en-arrastre');
+            limpiarSobrevuelo();
         });
     }
 }
