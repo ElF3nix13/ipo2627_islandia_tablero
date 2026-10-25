@@ -93,35 +93,56 @@ body {
     align-items: flex-start;
 }
 
-/* Panel lateral de controles */
-.control-panel {
+/* BARRA LATERAL Y PANELES */
+.sidebar {
     display: flex;
     flex-direction: column;
     gap: var(--espacio-md);
     width: clamp(16rem, 25vw, 22rem);
-    background-color: var(--color-superficie);
-    padding: var(--espacio-md);
-    border-radius: var(--radio-md);
-    border: 1px solid var(--color-borde);
 }
 
-.game-status {
+.panel {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    padding: var(--espacio-md);
+}
+
+/* Panel de estado del juego */
+.panel--status {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: var(--espacio-sm);
-    border-bottom: 1px solid var(--color-borde);
 }
 
 .game-status__etiqueta {
     font-size: var(--tamano-sm);
+    font-weight: 600;
     color: var(--color-texto-secundario);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .game-status__valor {
-    font-size: var(--tamano-lg);
+    font-size: var(--tamano-xl);
     font-weight: bold;
     color: var(--color-primario);
+    line-height: 1;
+}
+
+/* Panel de ajustes de la partida */
+.panel--settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-md);
+}
+
+.panel__title {
+    font-size: var(--tamano-base);
+    font-weight: 600;
+    color: var(--color-texto);
+    padding-bottom: var(--espacio-sm);
+    border-bottom: 1px solid var(--color-borde);
 }
 
 .control-group {

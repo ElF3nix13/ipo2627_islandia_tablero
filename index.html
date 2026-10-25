@@ -20,44 +20,48 @@
     </header>
 
     <main class="main">
-        <aside class="control-panel">
-            <div class="game-status">
-                <span class="game-status__etiqueta">Movimientos:</span>
+        <aside class="sidebar">
+            <section class="panel panel--status" aria-label="Estado de la partida">
+                <span class="game-status__etiqueta">Movimientos</span>
                 <span class="game-status__valor" data-bind="movimientos">0</span>
-            </div>
+            </section>
 
-            <div class="control-group">
-                <label for="input-dimension" class="control-label">Dimensión:</label>
-                <input type="number" id="input-dimension" class="control-input" data-setting="dimension" min="3">
-            </div>
+            <section class="panel panel--settings" aria-label="Ajustes de la partida">
+                <h2 class="panel__title">Ajustes</h2>
 
-            <div class="control-group">
-                <label for="select-tamano" class="control-label">Tamaño de las fichas:</label>
-                <select id="select-tamano" class="control-input" data-setting="tamano">
-                    <option value="pequena">Pequeña</option>
-                    <option value="mediana">Mediana</option>
-                    <option value="grande">Grande</option>
-                </select>
-            </div>
+                <div class="control-group">
+                    <label for="input-dimension" class="control-label">Dimensión:</label>
+                    <input type="number" id="input-dimension" class="control-input" data-setting="dimension" min="3">
+                </div>
 
-            <div class="control-group">
-                <label for="select-aspecto" class="control-label">Aspecto de las fichas:</label>
-                <select id="select-aspecto" class="control-input" data-setting="aspecto">
-                    <option value="geometrico">Geométrico</option>
-                    <option value="naipes">Naipes</option>
-                </select>
-            </div>
+                <div class="control-group">
+                    <label for="select-tamano" class="control-label">Tamaño de las fichas:</label>
+                    <select id="select-tamano" class="control-input" data-setting="tamano">
+                        <option value="pequena">Pequeña</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="grande">Grande</option>
+                    </select>
+                </div>
 
-            <div class="control-group">
-                <label for="select-paleta" class="control-label">Paleta de color:</label>
-                <select id="select-paleta" class="control-input" data-setting="paleta">
-                    <option value="primaria">Primaria</option>
-                    <option value="complementaria">Complementaria</option>
-                    <option value="escala-grises">Escala de grises</option>
-                </select>
-            </div>
+                <div class="control-group">
+                    <label for="select-aspecto" class="control-label">Aspecto de las fichas:</label>
+                    <select id="select-aspecto" class="control-input" data-setting="aspecto">
+                        <option value="geometrico">Geométrico</option>
+                        <option value="naipes">Naipes</option>
+                    </select>
+                </div>
 
-            <button class="btn btn--primario" data-action="nuevo-juego">Nueva partida</button>
+                <div class="control-group">
+                    <label for="select-paleta" class="control-label">Paleta de color:</label>
+                    <select id="select-paleta" class="control-input" data-setting="paleta">
+                        <option value="primaria">Primaria</option>
+                        <option value="complementaria">Complementaria</option>
+                        <option value="escala-grises">Escala de grises</option>
+                    </select>
+                </div>
+
+                <button class="btn btn--primario" data-action="nuevo-juego">Nueva partida</button>
+            </section>
         </aside>
 
         <section class="board-section">
