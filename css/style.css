@@ -85,20 +85,27 @@ body {
 
 /* DISTRIBUCIÓN PRINCIPAL */
 .main {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-items: center;
     flex: 1;
     padding: var(--espacio-lg);
     gap: var(--espacio-lg);
-    justify-content: center;
-    align-items: flex-start;
 }
 
 /* BARRA LATERAL Y PANELES */
 .sidebar {
+    grid-column: 1;
+    justify-self: end;
     display: flex;
     flex-direction: column;
     gap: var(--espacio-md);
-    width: clamp(16rem, 25vw, 22rem);
+    width: 100%;
+    min-width: 15rem;
+    max-width: 26rem;
+    height: min(85vmin, calc(100vh - 8rem), 780px);
+    min-height: max-content;
 }
 
 .panel {
@@ -113,6 +120,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: clamp(var(--espacio-md), 2vh, var(--espacio-lg));
 }
 
 .game-status__etiqueta {
@@ -124,7 +132,7 @@ body {
 }
 
 .game-status__valor {
-    font-size: var(--tamano-xl);
+    font-size: clamp(var(--tamano-xl), 3.5vh, 2.5rem);
     font-weight: bold;
     color: var(--color-primario);
     line-height: 1;
@@ -132,9 +140,11 @@ body {
 
 /* Panel de ajustes de la partida */
 .panel--settings {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--espacio-md);
+    gap: clamp(var(--espacio-sm), 2vh, 1.25rem);
+    padding: clamp(var(--espacio-md), 2vh, var(--espacio-lg));
 }
 
 .panel__title {
@@ -143,6 +153,14 @@ body {
     color: var(--color-texto);
     padding-bottom: var(--espacio-sm);
     border-bottom: 1px solid var(--color-borde);
+}
+
+.panel--settings .btn--primario {
+    width: 100%;
+    margin-top: auto;
+    padding: clamp(0.6rem, 1.3vh, 0.85rem) var(--espacio-md);
+    font-size: var(--tamano-base);
+    font-weight: 600;
 }
 
 .control-group {
@@ -157,7 +175,8 @@ body {
 }
 
 .control-input {
-    padding: var(--espacio-sm);
+    width: 100%;
+    padding: clamp(0.45rem, 1vh, 0.65rem) var(--espacio-sm);
     font-family: inherit;
     font-size: var(--tamano-base);
     border: 1px solid var(--color-borde);
@@ -167,6 +186,7 @@ body {
 
 /* ÁREA DEL TABLERO */
 .board-section {
+    grid-column: 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,13 +194,15 @@ body {
 
 .board-grid {
     display: grid;
-    gap: clamp(1px, calc(18px / var(--n-cols, 4)), 8px);
-    padding: clamp(4px, calc(24px / var(--n-cols, 4)), 12px);
+    aspect-ratio: 1 / 1;
+    gap: clamp(2px, calc(24px / var(--n-cols, 4)), 12px);
+    padding: clamp(6px, calc(32px / var(--n-cols, 4)), 16px);
     background-color: var(--color-superficie);
     border: 1px solid var(--color-borde);
     border-radius: var(--radio-md);
-    width: min(70vmin, 550px);
-    height: min(70vmin, 550px);
+    width: min(85vmin, calc(100vh - 8rem), 780px);
+    height: min(85vmin, calc(100vh - 8rem), 780px);
+    max-width: 100%;
 }
 
 .tablero-celda {
@@ -405,4 +427,36 @@ body {
 
 .modal--victoria .btn {
     align-self: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1150px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar {
+        grid-column: auto;
+        justify-self: center;
+        width: 100%;
+        max-width: min(85vmin, 600px);
+        min-width: unset;
+        height: auto;
+        min-height: unset;
+    }
+
+    .panel--settings {
+        flex: initial;
+    }
+
+    .panel--settings .btn--primario {
+        margin-top: var(--espacio-sm);
+    }
+
+    .board-section {
+        grid-column: auto;
+    }
 }
