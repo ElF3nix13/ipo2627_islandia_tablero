@@ -1,7 +1,5 @@
 :root {
-    /* ------------------------------------------------------------------------
-       DISEÑO CROMÁTICO (Esquemas HSL calculados con calc() y var())
-       ------------------------------------------------------------------------ */
+    /* DISEÑO CROMÁTICO */
     /* Valores raíz del sistema */
     --tono-base: 215;                        
     --sat-base: 75%;
@@ -33,7 +31,7 @@
     --ficha-1-color: hsl(var(--tono-ficha-1), var(--sat-ficha-1), var(--lum-ficha-1));
     --ficha-2-color: hsl(var(--tono-ficha-2), var(--sat-ficha-2), var(--lum-ficha-2));
 
-    /* Interfaz: Neutros y acentos derivados del tono raíz */
+    /* Interfaz */
     --color-fondo: hsl(var(--tono-base), 15%, 96%);
     --color-superficie: hsl(0, 0%, 100%);
     --color-superficie-alt: hsl(var(--tono-base), 15%, 93%);
@@ -47,9 +45,7 @@
 
     --color-drop-hover: hsl(var(--tono-base), 60%, 88%);
 
-    /* ------------------------------------------------------------------------
-       DISEÑO TIPOGRÁFICO Y ESPACIAL
-       ------------------------------------------------------------------------ */
+    /* DISEÑO TIPOGRÁFICO Y ESPACIAL */
     --fuente-principal: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --tamano-base: 1rem;
     --tamano-sm: 0.875rem;
@@ -69,16 +65,13 @@
     --escala-grande: 95%;
 }
 
-/* ----------------------------------------------------------------------------
-   VARIACIONES DE PALETA MEDIANTE VARIABLES Y SUMAS
-   ---------------------------------------------------------------------------- */
-
-/* Tríada Complementaria: parte del complementario del tono original (+ 180) */
+/* VARIACIONES DE PALETA */
+/* Tríada Complementaria del tono original */
 :root[data-paleta="complementaria"] {
     --tono-fichas-base: calc(var(--tono-base) + 180);
 }
 
-/* Escala de Grises: saturación a 0% y progresión uniforme de luminosidad */
+/* Escala de Grises */
 :root[data-paleta="escala-grises"] {
     --sat-fichas-base: 0%;
     --lum-fichas-base: 0%;

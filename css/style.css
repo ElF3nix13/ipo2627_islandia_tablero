@@ -1,8 +1,6 @@
 @import url("variables.css");
 
-/* --------------------------------------------------------------------------
-   REGLA RESET BÁSICA
-   -------------------------------------------------------------------------- */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -19,22 +17,9 @@ body {
     flex-direction: column;
 }
 
-/* --------------------------------------------------------------------------
-   CABECERA (Composición Unidimensional con Flexbox)
-   -------------------------------------------------------------------------- */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--espacio-md) var(--espacio-lg);
-    background-color: var(--color-superficie);
-    border-bottom: 1px solid var(--color-borde);
-}
-
-/* Título como logo identificativo con tono base */
+/* CABECERA */
 .header {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: var(--espacio-md) var(--espacio-lg);
     background-color: var(--color-superficie);
@@ -56,9 +41,7 @@ body {
     gap: var(--espacio-sm);
 }
 
-/* --------------------------------------------------------------------------
-   BOTONES (Notación BEM y sin florituras)
-   -------------------------------------------------------------------------- */
+/* BOTONES (Notación BEM y sin florituras) */
 .btn {
     padding: var(--espacio-sm) var(--espacio-md);
     font-family: inherit;
@@ -100,9 +83,7 @@ body {
     flex-shrink: 0;
 }
 
-/* --------------------------------------------------------------------------
-   DISTRIBUCIÓN PRINCIPAL
-   -------------------------------------------------------------------------- */
+/* DISTRIBUCIÓN PRINCIPAL */
 .main {
     display: flex;
     flex: 1;
@@ -112,7 +93,7 @@ body {
     align-items: flex-start;
 }
 
-/* Panel lateral de controles (Aside) */
+/* Panel lateral de controles */
 .control-panel {
     display: flex;
     flex-direction: column;
@@ -163,9 +144,7 @@ body {
     background-color: var(--color-fondo);
 }
 
-/* --------------------------------------------------------------------------
-   ÁREA DEL TABLERO (Composición Bidimensional con CSS Grid)
-   -------------------------------------------------------------------------- */
+/* ÁREA DEL TABLERO */
 .board-section {
     display: flex;
     justify-content: center;
@@ -198,10 +177,7 @@ body {
     border-color: var(--color-primario);
 }
 
-/* --------------------------------------------------------------------------
-   FICHAS: FORMA, COLOR Y TAMAÑO
-   Cada tipo (0, 1, 2) tiene su propia forma SVG y su color triádico
-   -------------------------------------------------------------------------- */
+/* FICHAS */
 .ficha {
     display: flex;
     justify-content: center;
@@ -236,7 +212,7 @@ body {
     height: var(--escala-grande);
 }
 
-/* Colores de los 3 tipos de fichas (aplicados al trazo y relleno SVG) */
+/* Colores de los 3 tipos de fichas */
 .ficha-tipo-0 {
     color: var(--ficha-0-color);
 }
@@ -263,9 +239,7 @@ body {
     fill: currentColor;
 }
 
-/* --------------------------------------------------------------------------
-   MODALES DE ASISTENCIA (Posicionamiento fijo)
-   -------------------------------------------------------------------------- */
+/* MODALES DE ASISTENCIA */
 .modal {
     position: fixed;
     top: 50%;
