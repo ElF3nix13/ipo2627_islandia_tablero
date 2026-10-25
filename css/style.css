@@ -268,38 +268,134 @@ body {
     border-radius: var(--radio-md);
     background-color: var(--color-superficie);
     padding: var(--espacio-lg);
-    width: min(90vw, 24rem);
+    width: min(92vw, 30rem);
+    box-shadow: 0 10px 25px -5px hsla(var(--tono-base), 30%, 15%, 0.15),
+                0 8px 10px -6px hsla(var(--tono-base), 30%, 15%, 0.1);
 }
 
 .modal::backdrop {
-    background-color: hsla(0, 0%, 0%, 0.4);
+    background-color: hsla(var(--tono-base), 30%, 15%, 0.45);
+    backdrop-filter: blur(2px);
 }
 
 .modal__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--espacio-sm);
+    margin-bottom: var(--espacio-md);
+    padding-bottom: var(--espacio-sm);
+    border-bottom: 1px solid var(--color-borde);
 }
 
 .modal__header h2 {
-    flex: 1;
-    text-align: center;
+    font-size: var(--tamano-lg);
+    color: var(--color-primario);
 }
 
 .modal__close {
     background: transparent;
     border: none;
     font-size: var(--tamano-lg);
+    color: var(--color-texto-secundario);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    line-height: 1;
+}
+
+.modal__close:hover {
+    background-color: var(--color-superficie-alt);
+    color: var(--color-texto);
 }
 
 .modal__body {
     display: flex;
     flex-direction: column;
-    gap: var(--espacio-sm);
+    gap: var(--espacio-md);
     font-size: var(--tamano-sm);
+    color: var(--color-texto);
+}
+
+.modal__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--espacio-md);
+    padding-top: var(--espacio-sm);
+}
+
+/* Pasos explicativos del cartel de ayuda */
+.ayuda-paso {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--espacio-md);
+}
+
+.ayuda-paso__numero {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background-color: var(--color-superficie-alt);
+    color: var(--color-primario);
+    font-weight: bold;
+    font-size: var(--tamano-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--color-borde);
+}
+
+.ayuda-paso__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.ayuda-paso__titulo {
+    font-size: var(--tamano-base);
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.ayuda-paso__desc {
     color: var(--color-texto-secundario);
+    line-height: 1.4;
+}
+
+.ayuda-paso__desc strong {
+    color: var(--color-texto);
+}
+
+/* Ejemplo visual de fila completada */
+.ayuda-ejemplo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-superficie-alt);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-sm);
+    padding: var(--espacio-sm) var(--espacio-md);
+}
+
+.ayuda-ejemplo__etiqueta {
+    font-size: var(--tamano-sm);
+    font-weight: 500;
+    color: var(--color-texto-secundario);
+}
+
+.ayuda-ejemplo__fichas {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.ayuda-ejemplo__icono {
+    color: var(--ficha-0-color);
+    font-size: 1.25rem;
+    line-height: 1;
 }
 
 .modal--victoria .modal__body {

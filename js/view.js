@@ -9,7 +9,7 @@ export class View {
         this.inputPaleta = document.querySelector('[data-setting="paleta"]');
         this.botonesNuevoJuego = document.querySelectorAll('[data-action="nuevo-juego"]');
         this.btnAyuda = document.querySelector('[data-action="mostrar-ayuda"]');
-        this.btnCerrarAyuda = document.querySelector('[data-action="cerrar-ayuda"]');
+        this.botonesCerrarAyuda = document.querySelectorAll('[data-action="cerrar-ayuda"]');
         this.modalAyuda = document.querySelector('[data-modal="ayuda"]');
         this.modalVictoria = document.querySelector('[data-modal="victoria"]');
         this.spanMovimientos = document.querySelector('[data-bind="movimientos"]');
@@ -129,7 +129,14 @@ export class View {
 
     bindMostrarAyuda() {
         this.btnAyuda.addEventListener('click', () => this.toggleModalAyuda(true));
-        this.btnCerrarAyuda.addEventListener('click', () => this.toggleModalAyuda(false));
+        this.botonesCerrarAyuda.forEach(btn => {
+            btn.addEventListener('click', () => this.toggleModalAyuda(false));
+        });
+        this.modalAyuda.addEventListener('click', (e) => {
+            if (e.target === this.modalAyuda) {
+                this.toggleModalAyuda(false);
+            }
+        });
     }
 
     bindDragAndDrop(onDrop) {

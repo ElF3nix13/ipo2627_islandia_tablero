@@ -13,7 +13,7 @@
 <body>
 
     <header class="header">
-        <h1 class="header__title">Tablero</h1>
+        <h1 class="header__title">Juego del tablero</h1>
         <nav class="nav">
             <button class="btn btn--secundario btn--ayuda" data-action="mostrar-ayuda" aria-label="Ayuda">?</button>
         </nav>
@@ -70,17 +70,50 @@
     </main>
 
     <!-- Modal de Ayuda -->
-    <dialog class="modal" data-modal="ayuda">
+    <dialog class="modal modal--ayuda" data-modal="ayuda">
         <div class="modal__content">
             <header class="modal__header">
                 <h2>Mecánica del Juego</h2>
-                <button class="modal__close" data-action="cerrar-ayuda">&times;</button>
+                <button class="modal__close" data-action="cerrar-ayuda" aria-label="Cerrar ayuda">&times;</button>
             </header>
             <div class="modal__body">
-                <p><strong>Comienzo:</strong> Tablero aleatorio de tamaño N &ge; 3 con 3 tipos de fichas distinguibles por forma y color.</p>
-                <p><strong>Movimiento:</strong> Arrastra y suelta una ficha sobre otra para intercambiar sus posiciones.</p>
-                <p><strong>Fin:</strong> Consigue que todas las fichas de cada fila sean del mismo tipo.</p>
+                <div class="ayuda-paso">
+                    <span class="ayuda-paso__numero">1</span>
+                    <div class="ayuda-paso__info">
+                        <h3 class="ayuda-paso__titulo">Objetivo</h3>
+                        <p class="ayuda-paso__desc">Consigue que <strong>todas las fichas de cada fila</strong> sean del mismo tipo (igual forma y color).</p>
+                    </div>
+                </div>
+
+                <div class="ayuda-paso">
+                    <span class="ayuda-paso__numero">2</span>
+                    <div class="ayuda-paso__info">
+                        <h3 class="ayuda-paso__titulo">Movimiento</h3>
+                        <p class="ayuda-paso__desc"><strong>Arrastra y suelta</strong> una ficha sobre otra para intercambiar sus posiciones en el tablero.</p>
+                    </div>
+                </div>
+
+                <div class="ayuda-paso">
+                    <span class="ayuda-paso__numero">3</span>
+                    <div class="ayuda-paso__info">
+                        <h3 class="ayuda-paso__titulo">Ajustes y dificultad</h3>
+                        <p class="ayuda-paso__desc">Puedes cambiar la <strong>dimensión, el tamaño y el estilo</strong> de las fichas en el panel lateral.</p>
+                    </div>
+                </div>
+
+                <div class="ayuda-ejemplo">
+                    <span class="ayuda-ejemplo__etiqueta">Fila completada (ejemplo):</span>
+                    <div class="ayuda-ejemplo__fichas" aria-hidden="true">
+                        <span class="ayuda-ejemplo__icono">&#9679;</span>
+                        <span class="ayuda-ejemplo__icono">&#9679;</span>
+                        <span class="ayuda-ejemplo__icono">&#9679;</span>
+                        <span class="ayuda-ejemplo__icono">&#9679;</span>
+                    </div>
+                </div>
             </div>
+            <footer class="modal__footer">
+                <button class="btn btn--primario" data-action="cerrar-ayuda">¡Entendido!</button>
+            </footer>
         </div>
     </dialog>
 
