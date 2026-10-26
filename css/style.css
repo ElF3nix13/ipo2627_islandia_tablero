@@ -292,19 +292,25 @@ body {
 
 .modal__header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    position: relative;          /* Contexto de referencia para el botón de cierre */
     margin-bottom: var(--espacio-md);
     padding-bottom: var(--espacio-sm);
     border-bottom: 1px solid var(--color-borde);
 }
 
-.modal__header h2 {
+.modal__title {
+    width: 100%;                 /* Ocupa todo el ancho */
+    text-align: center;          /* Centra el texto geométricamente */
     font-size: var(--tamano-lg);
     color: var(--color-primario);
 }
 
 .modal__close {
+    position: absolute;          /* Se posiciona a la derecha sin empujar el título */
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     background: transparent;
     border: none;
     font-size: var(--tamano-lg);
