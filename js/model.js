@@ -3,7 +3,7 @@
 export class Model {
     constructor() {
         this.dimension = 4;
-        this.tamanoFichas = 'mediana';
+        this.tamanoFichas = 'mediano';
         this.aspectoFichas = 'geometrico';
         this.paletaColores = 'primaria';
         this.tablero = [];

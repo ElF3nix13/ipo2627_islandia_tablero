@@ -42,7 +42,7 @@ body {
     gap: var(--espacio-sm);
 }
 
-/* BOTONES (Notación BEM y sin florituras) */
+/* BOTONES */
 .btn {
     padding: var(--espacio-sm) var(--espacio-md);
     font-family: inherit;
@@ -97,11 +97,11 @@ body {
 .sidebar {
     display: flex;
     flex-direction: column;
-    gap: var(--espacio-md);       /* Separación compacta y controlada entre paneles */
+    gap: var(--espacio-md);
     width: 100%;
     min-width: 15rem;
     max-width: 22rem;
-    height: auto;                 /* Abraza el contenido de los dos paneles de forma natural */
+    height: auto;
 }
 
 .panel {
@@ -149,8 +149,8 @@ body {
 }
 
 .panel--settings .btn--primario {
-    align-self: center;           /* Mantiene las mismas dimensiones que el del modal */
-    margin-top: var(--espacio-sm);/* Pegado inmediatamente a los selectores */
+    align-self: center;
+    margin-top: var(--espacio-sm);
 }
 
 .control-group {
@@ -228,14 +228,14 @@ body {
 }
 
 /* Magnitudes */
-.ficha--pequena {
-    width: var(--escala-pequena);
-    height: var(--escala-pequena);
+.ficha--pequeno {
+    width: var(--escala-pequeno);
+    height: var(--escala-pequeno);
 }
 
-.ficha--mediana {
-    width: var(--escala-mediana);
-    height: var(--escala-mediana);
+.ficha--mediano {
+    width: var(--escala-mediano);
+    height: var(--escala-mediano);
 }
 
 .ficha--grande {
@@ -293,21 +293,21 @@ body {
 .modal__header {
     display: flex;
     align-items: center;
-    position: relative;          /* Contexto de referencia para el botón de cierre */
+    position: relative;
     margin-bottom: var(--espacio-md);
     padding-bottom: var(--espacio-sm);
     border-bottom: 1px solid var(--color-borde);
 }
 
 .modal__title {
-    width: 100%;                 /* Ocupa todo el ancho */
-    text-align: center;          /* Centra el texto geométricamente */
+    width: 100%;
+    text-align: center;
     font-size: var(--tamano-lg);
     color: var(--color-primario);
 }
 
 .modal__close {
-    position: absolute;          /* Se posiciona a la derecha sin empujar el título */
+    position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
@@ -388,34 +388,7 @@ body {
     color: var(--color-texto);
 }
 
-/* Ejemplo visual de fila completada */
-.ayuda-ejemplo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--color-superficie-alt);
-    border: 1px solid var(--color-borde);
-    border-radius: var(--radio-sm);
-    padding: var(--espacio-sm) var(--espacio-md);
-}
-
-.ayuda-ejemplo__etiqueta {
-    font-size: var(--tamano-sm);
-    font-weight: 500;
-    color: var(--color-texto-secundario);
-}
-
-.ayuda-ejemplo__fichas {
-    display: flex;
-    gap: 0.35rem;
-}
-
-.ayuda-ejemplo__icono {
-    color: var(--ficha-0-color);
-    font-size: 1.25rem;
-    line-height: 1;
-}
-
+/* Victoria */
 .modal--victoria .modal__body {
     text-align: center;
     gap: var(--espacio-md);
