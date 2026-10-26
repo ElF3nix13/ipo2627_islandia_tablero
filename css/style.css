@@ -86,8 +86,8 @@ body {
 /* DISTRIBUCIÓN PRINCIPAL */
 .main {
     display: flex;
-    justify-content: center; /* Centrado horizontal */
-    align-items: flex-start;  /* Inicio del eje vertical (sin centrado vertical) */
+    justify-content: center;
+    align-items: flex-start;
     flex: 1;
     padding: var(--espacio-lg);
     gap: var(--espacio-lg);
@@ -97,12 +97,11 @@ body {
 .sidebar {
     display: flex;
     flex-direction: column;
-    gap: var(--espacio-md);
+    gap: var(--espacio-md);       /* Separación compacta y controlada entre paneles */
     width: 100%;
     min-width: 15rem;
     max-width: 22rem;
-    height: min(85vmin, calc(100vh - 8rem), 780px);
-    min-height: max-content;
+    height: auto;                 /* Abraza el contenido de los dos paneles de forma natural */
 }
 
 .panel {
@@ -135,10 +134,9 @@ body {
 
 /* Panel de ajustes de la partida */
 .panel--settings {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: clamp(var(--espacio-sm), 2vh, 1.25rem);
+    gap: clamp(var(--espacio-sm), 1.8vh, 1rem);
     padding: clamp(var(--espacio-md), 2vh, var(--espacio-lg));
 }
 
@@ -151,11 +149,8 @@ body {
 }
 
 .panel--settings .btn--primario {
-    width: 100%;
-    margin-top: auto;
-    padding: clamp(0.6rem, 1.3vh, 0.85rem) var(--espacio-md);
-    font-size: var(--tamano-base);
-    font-weight: 600;
+    align-self: center;           /* Mantiene las mismas dimensiones que el del modal */
+    margin-top: var(--espacio-sm);/* Pegado inmediatamente a los selectores */
 }
 
 .control-group {
