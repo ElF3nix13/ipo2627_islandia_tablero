@@ -22,7 +22,7 @@ body {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: var(--espacio-md) var(--espacio-lg);
+    padding: var(--espacio-base) var(--espacio-lg);
     background-color: var(--color-superficie);
     border-bottom: 1px solid var(--color-borde);
 }
