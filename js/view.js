@@ -13,7 +13,7 @@ export class View {
         this.modalAyuda = document.querySelector('[data-modal="ayuda"]');
         this.modalVictoria = document.querySelector('[data-modal="victoria"]');
         this.spanMovimientos = document.querySelector('[data-bind="movimientos"]');
-        this.spanVictoriaMovimientos = document.querySelector('[data-bind="victoria-movimientos"]');
+        this.mensajeVictoria = document.querySelector('[data-bind="victoria-mensaje"]');
 
         this.formasSvg = {
             geometrico: {
@@ -79,8 +79,12 @@ export class View {
 
     actualizarEstadisticas(movimientos, juegoTerminado) {
         this.spanMovimientos.textContent = movimientos;
+        
         if (juegoTerminado) {
-            this.spanVictoriaMovimientos.textContent = movimientos;
+            const palabraMovimientos = movimientos === 1 ? 'movimiento' : 'movimientos';
+            if (this.mensajeVictoria) {
+                this.mensajeVictoria.innerHTML = `Has completado el tablero en <strong>${movimientos}</strong> ${palabraMovimientos}.`;
+            }
             this.modalVictoria.showModal();
         } else if (this.modalVictoria.open) {
             this.modalVictoria.close();
