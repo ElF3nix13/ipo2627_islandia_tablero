@@ -27,8 +27,11 @@ export class Controller {
         this.actualizarVistaGeneral();
     }
 
-    manejarCambioDimension(dimension) {
-        if (this.model.setDimension(dimension)) {
+    manejarCambioDimension(valorTexto) {
+        const dimension = parseInt(valorTexto, 10);
+        if (!this.model.setDimension(dimension)) {
+            this.view.sincronizarControles(this.model.getEstado());
+        } else {
             this.actualizarVistaGeneral();
         }
     }

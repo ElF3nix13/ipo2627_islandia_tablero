@@ -64,7 +64,7 @@ export class View {
                 ficha.dataset.columna = cIndex;
                 ficha.dataset.tipo = tipoFicha;
 
-                const contenidoSvg = conjuntoActual[tipoFicha] || conjuntoActual[0];
+                const contenidoSvg = conjuntoActual[tipoFicha];
                 ficha.innerHTML = `
                     <svg class="ficha__svg" viewBox="0 0 100 100" aria-hidden="true">
                         ${contenidoSvg}
@@ -105,13 +105,7 @@ export class View {
 
     bindCambioDimension(handler) {
         this.inputDimension.addEventListener('change', (e) => {
-            const val = parseInt(e.target.value, 10);
-            if (val >= 3) {
-                handler(val);
-            } else {
-                e.target.value = 3;
-                handler(3);
-            }
+            handler(e.target.value);
         });
     }
 
